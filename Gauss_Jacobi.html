@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Iterative methods</title>
+<style>
+    button{
+        color: red;
+        border: 2px;
+    }
+
+</style>
+    </head>
+    <body>
+	<script>
+    function GJ(){
+    var n=window.prompt("Enter the size of the matrix")
+            n=parseInt(n)
+
+            var mat=new Array(n)
+
+            for(i=0;i<n;i++){
+mat[i]=new Array(n)
+            }
+
+for(i=0;i<n;i++){
+    for(j=0;j<n;j++){
+mat[i][j]=window.prompt("Enter the Element")
+mat[i][j]=parseInt(mat[i][j])
+    }
+}
+
+alert("Enter the b vector")
+var b=[n]
+for(i=0;i<n;i++){
+b[i]=window.prompt("Enter the Element")
+b[i]=parseInt(b[i])
+}
+
+
+alert("Enter the initial values of vector x")
+var x=[n]
+for(i=0;i<n;i++){
+x[i]=window.prompt("Enter the Element")
+x[i]=parseFloat(x[i])
+}
+
+
+var xn=[n]
+for(i=0;i<n;i++){
+xn[i]=x[i]
+}
+
+var itr=window.prompt("Enter the no. of iterations")
+itr=parseFloat(itr)
+
+for(k=0;k<itr;k++){
+for(i=0;i<n;i++){
+    for(j=0;j<n;j++){
+if(i<j){
+x[i]=(b[i]-mat[i][j]*x[j])/mat[i][i]
+}
+if(i>j){
+    x[i]=(b[i]-mat[i][j]*xn[j])/mat[i][i]
+}
+    }
+}
+for(i=0;i<n;i++){
+xn[i]=x[i]
+}
+}
+
+document.write("x[0] = "+x[0]+","+"x[1] = "+x[1])
+    }
+</script>
+<button onclick="GJ()">GJ</button>
+    </body>
+</html>
