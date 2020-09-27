@@ -4,34 +4,34 @@ fun main() {
      println("Enter the input : ")
      var mat = arrayOf(Array(n) { 0 }, Array(n) { 0 }) //Creating matrix
 
-     for (i in 0..1) {
-         for (j in 0..1) {
+     for (i in 0..n-1) {
+         for (j in 0..n-1) {
              mat[i][j] = readLine()!!.toInt()
          }
      }
 
      println("Enter the b vector :")
      var b = Array(n) { 0 }
-     for (i in 0..1) {
+     for (i in 0..n-1) {
          b[i] = readLine()!!.toInt()
      }
 
 
      println("Enter the initial value of x vector :")
      var x = Array<Double>(n) { 0.0 }
-     for (i in 0..1) {
+     for (i in 0..n-1) {
          x[i] = readLine()!!.toDouble()
      }
      
      var xn = Array<Double>(n) { 0.0 }
-     for (i in 0..1) {
+     for (i in 0..n-1) {
          xn[i] = x[i]
      }
      println("Enter the no. of iteration")
      var iter = readLine()!!.toInt()
-     for (i in 0..iter - 1) {
-         for (i in 0..1) {
-             for (j in 0..1) {
+     for (k in 0..iter - 1) {
+         for (i in 0..n-1) {
+             for (j in 0..n-1) {
                  if (i < j) {
                      x[i] = (b[i] - x[j] * mat[i][j]) / mat[i][i]
                  }
@@ -41,10 +41,14 @@ fun main() {
              }
 
          }
-         for (i in 0..1) {
+         for (i in 0..n-1) {
              xn[i] = x[i]
          }
      }
-	 println("Gauss Jacobi : " + "x[0]=" + x[0] + "," + "x[1]=" + x[1])
+	 
+	  println("\n Gauss Jacobi Results : ")
+for (i in  0..n-1) {
+    println("x[${i}]=" + x[i] )
+}
 
  }
